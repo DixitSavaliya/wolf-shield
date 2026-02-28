@@ -1,0 +1,55 @@
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo-graphic-wrap,
+.logo-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-graphic {
+  width: 100%;
+  height: auto;
+  max-width: 140px;
+}
+
+.logo-icon-wrap .logo-graphic {
+  max-width: 48px;
+}
+
+.logo-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--ws-primary);
+  letter-spacing: 0.02em;
+  margin-top: 0.25rem;
+  line-height: 1.2;
+}
+
+.logo-tagline {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ws-text-muted);
+  letter-spacing: 0.02em;
+  margin-top: 0.125rem;
+}
+
+/* Header context: compact logo */
+.header .logo .logo-graphic-wrap .logo-graphic {
+  max-width: 100px;
+}
+
+.header .logo .logo-name {
+  font-size: 1.125rem;
+}
+
+.header .logo .logo-tagline {
+  font-size: 0.75rem;
+}

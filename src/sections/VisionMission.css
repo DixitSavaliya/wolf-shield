@@ -1,0 +1,43 @@
+.vision-mission {
+  background: var(--ws-white);
+}
+
+.vision-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.vision-mission-card {
+  padding: 1.5rem;
+  background: var(--ws-off-white);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--ws-primary);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition);
+}
+
+.vision-mission-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.vision-mission-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ws-primary);
+  margin-bottom: 0.75rem;
+}
+
+.vision-mission-text {
+  color: var(--ws-text);
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .vision-mission-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
