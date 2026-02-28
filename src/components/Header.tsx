@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 import './Header.css';
 
@@ -15,6 +15,17 @@ const NAV_LINKS = [
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const el = document.getElementById(id);
@@ -29,34 +40,54 @@ export function Header() {
           <Logo variant="full" />
         </a>
 
-        <button
-          type="button"
-          className="header-toggle"
-          aria-expanded={menuOpen}
-          aria-controls="nav-menu"
-          aria-label="Toggle menu"
-          onClick={() => setMenuOpen((o) => !o)}
-        >
-          <span className="header-toggle-bar" />
-          <span className="header-toggle-bar" />
-          <span className="header-toggle-bar" />
-        </button>
+        <div className="header-right">
+          <button
+            type="button"
+            className={`header-toggle ${menuOpen ? 'header-toggle--open' : ''}`}
+            aria-expanded={menuOpen}
+            aria-controls="nav-menu"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span className="header-toggle-bar" />
+            <span className="header-toggle-bar" />
+            <span className="header-toggle-bar" />
+          </button>
 
-        <nav id="nav-menu" className={`header-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
-          <ul className="header-nav-list">
-            {NAV_LINKS.map(({ id, label }) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  onClick={(e) => handleNavClick(e, id)}
-                  className="header-nav-link"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          {menuOpen && (
+            <div
+              className="header-backdrop"
+              aria-hidden
+              onClick={() => setMenuOpen(false)}
+            />
+          )}
+          <nav id="nav-menu" className={`header-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation">
+            <div className="header-nav-top">
+              <span className="header-nav-title">Menu</span>
+              <button
+                type="button"
+                className="header-close"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="header-close-icon" aria-hidden>×</span>
+              </button>
+            </div>
+            <ul className="header-nav-list">
+              {NAV_LINKS.map(({ id, label }) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    onClick={(e) => handleNavClick(e, id)}
+                    className="header-nav-link"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
   );

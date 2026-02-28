@@ -1,6 +1,6 @@
 .product-card {
   background: var(--ws-white);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow);
   border: 1px solid var(--ws-gray-200);
@@ -15,17 +15,18 @@
 .product-card-header {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 1.25rem;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
   align-items: center;
-  padding: 1.5rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
   background: var(--ws-off-white);
   border-bottom: 1px solid var(--ws-gray-200);
+  min-width: 0;
 }
 
 .product-card-visual {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   flex-shrink: 0;
   border-radius: 10px;
   overflow: hidden;
@@ -65,11 +66,13 @@
 
 .product-card-title {
   font-family: var(--font-heading);
-  font-size: 1.125rem;
+  font-size: clamp(1rem, 2vw, 1.125rem);
   font-weight: 700;
   color: var(--ws-primary);
   margin: 0 0 0.25rem 0;
   line-height: 1.25;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .product-card-subtitle {
@@ -80,7 +83,7 @@
 }
 
 .product-card-body {
-  padding: 1.5rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
 }
 
 .product-card-block {
@@ -133,6 +136,7 @@
 
 .product-card-table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .product-card-table {

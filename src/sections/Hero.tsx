@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Logo } from '../components/Logo';
 import { placeholderImages } from '../data/placeholderImages';
 import './Hero.css';
 
@@ -62,9 +61,6 @@ export function Hero() {
       <div className="hero-bg" aria-hidden />
       <div className="container hero-inner">
         <div className="hero-content">
-          <div className="hero-logo" aria-hidden>
-            <Logo variant="full" />
-          </div>
           <h1 className="hero-title">
             Adding Touch of Quality,
             <br />

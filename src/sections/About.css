@@ -2,42 +2,37 @@
   background: var(--ws-off-white);
 }
 
-.about-header {
+.about .container {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
 }
 
 .about-badge {
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   background: var(--ws-primary);
   color: var(--ws-white);
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
   font-weight: 700;
   line-height: 1.2;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  position: relative;
-}
-
-.about-badge::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  background: var(--ws-accent);
-  border-radius: 50%;
+  text-align: center;
+  max-width: 100%;
 }
 
 .about-logo-wrap {
@@ -45,17 +40,23 @@
 }
 
 .about-logo-img {
-  max-height: 80px;
+  max-height: 72px;
   width: auto;
+  display: block;
 }
 
 .about-content {
-  max-width: 72ch;
+  max-width: 52rem;
+  width: 100%;
+  margin-inline: auto;
+  text-align: left;
 }
 
 .about-content p {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-block);
   color: var(--ws-text);
+  line-height: 1.65;
+  font-size: clamp(0.9375rem, 1.5vw, 1rem);
 }
 
 .about-content p:last-child {
@@ -66,4 +67,15 @@
   font-size: 1.0625rem;
   font-weight: 500;
   color: var(--ws-primary-dark);
+}
+
+@media (min-width: 640px) {
+  .about-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .about-badge {
+    font-size: 1.5rem;
+    padding: 0.875rem 2rem;
+  }
 }

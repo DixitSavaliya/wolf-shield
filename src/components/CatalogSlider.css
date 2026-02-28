@@ -3,9 +3,10 @@
   width: 100%;
   max-width: 900px;
   margin-inline: auto;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
+  min-width: 0;
 }
 
 .catalog-slider {
@@ -60,7 +61,7 @@
 }
 
 .catalog-slide-caption {
-  padding: 1rem 1.25rem;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(0.875rem, 2vw, 1.25rem);
   background: var(--ws-primary);
   color: var(--ws-white);
   display: flex;
@@ -70,7 +71,7 @@
 
 .catalog-slide-title {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
 }
 
 .catalog-slide-products {
@@ -85,14 +86,15 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border: none;
   border-radius: 50%;
   background: var(--ws-white);
   box-shadow: var(--shadow-lg);
   cursor: pointer;
   transition: background-color var(--transition), transform var(--transition);
+  background-size: 20px;
 }
 
 .catalog-slider-prev:hover,
@@ -101,19 +103,19 @@
 }
 
 .catalog-slider-prev {
-  left: 12px;
+  left: 8px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c2340' stroke-width='2'%3E%3Cpath d='M15 18l-6-6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 24px;
+  background-size: 20px;
 }
 
 .catalog-slider-next {
-  right: 12px;
+  right: 8px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c2340' stroke-width='2'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 24px;
+  background-size: 20px;
 }
 
 .catalog-slider-prev:hover,

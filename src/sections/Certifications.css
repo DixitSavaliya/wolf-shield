@@ -20,7 +20,7 @@
 
 .certifications-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   max-width: 42rem;
   margin-inline: auto;
 }
@@ -37,7 +37,7 @@
 
 .certifications-subtitle {
   font-family: var(--font-body);
-  font-size: 1.0625rem;
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
   color: rgba(255, 255, 255, 0.88);
   margin: 0;
   line-height: 1.6;
@@ -57,12 +57,13 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 2vw, 1.5rem);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
+  border-radius: var(--radius-xl);
   backdrop-filter: blur(8px);
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+  min-width: 0;
 }
 
 .certifications-card:hover {
@@ -77,8 +78,8 @@
 }
 
 .certifications-badge {
-  width: 110px;
-  height: 110px;
+  width: clamp(90px, 22vw, 110px);
+  height: clamp(90px, 22vw, 110px);
   border-radius: 50%;
   background: var(--ws-white);
   border: 4px solid var(--ws-accent);
@@ -86,6 +87,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
 }
 
 .certifications-badge-text {
@@ -100,7 +102,7 @@
 
 .certifications-card-title {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: clamp(1.0625rem, 2.5vw, 1.25rem);
   font-weight: 700;
   color: var(--ws-white);
   margin: 0 0 0.5rem 0;

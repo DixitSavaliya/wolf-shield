@@ -3,7 +3,7 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
-/* WOLF SHIELD - Design tokens & base */
+/* WOLF SHIELD – Design system */
 :root {
   --ws-primary: #0c2340;
   --ws-primary-light: #1a3a5c;
@@ -19,13 +19,18 @@
   --ws-text-muted: #495057;
   --font-heading: "Libre Baskerville", "Georgia", serif;
   --font-body: "DM Sans", "Segoe UI", system-ui, sans-serif;
-  --space-section: clamp(4rem, 8vw, 6rem);
-  --container: min(1200px, 100% - 2rem);
+  --space-section: clamp(3.5rem, 7vw, 5.5rem);
+  --space-block: clamp(1rem, 2vw, 1.5rem);
+  --container-max: 1200px;
+  --container-padding: clamp(1rem, 4vw, 1.5rem);
   --radius: 8px;
   --radius-lg: 12px;
-  --shadow: 0 4px 24px rgba(12, 35, 64, 0.08);
-  --shadow-lg: 0 12px 48px rgba(12, 35, 64, 0.12);
-  --transition: 0.25s ease;
+  --radius-xl: 16px;
+  --shadow: 0 4px 20px rgba(12, 35, 64, 0.08);
+  --shadow-lg: 0 12px 40px rgba(12, 35, 64, 0.12);
+  --transition: 0.2s ease;
+  --touch-min: 44px;
+  --header-height: 72px;
 }
 
 *,
@@ -38,21 +43,27 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 1.5vw, 1.0625rem);
+  font-size: clamp(1rem, 2vw, 1.0625rem);
   line-height: 1.6;
   color: var(--ws-text);
   background-color: var(--ws-white);
   min-height: 100vh;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   min-height: 100vh;
+}
+
+main {
+  padding-top: var(--header-height);
 }
 
 img {
@@ -71,34 +82,59 @@ a:hover {
   color: var(--ws-accent);
 }
 
+a:focus-visible {
+  outline: 2px solid var(--ws-primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+[href]:focus-visible {
+  outline: 2px solid var(--ws-primary);
+  outline-offset: 2px;
+}
+
 ul, ol {
   list-style: none;
 }
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: clamp(1rem, 4vw, 1.5rem);
+  padding-inline: var(--container-padding);
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding-inline: 0.875rem;
+  }
 }
 
 .section {
   padding-block: var(--space-section);
 }
 
+@media (max-width: 480px) {
+  .section {
+    padding-block: clamp(2rem, 6vw, 3.5rem);
+  }
+}
+
 .section-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
   font-weight: 700;
   color: var(--ws-primary);
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 }
 
 .section-subtitle {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   color: var(--ws-text-muted);
-  max-width: 60ch;
+  max-width: 58ch;
+  line-height: 1.6;
 }
 
 .btn {
@@ -106,6 +142,7 @@ ul, ol {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  min-height: var(--touch-min);
   padding: 0.75rem 1.5rem;
   font-family: var(--font-body);
   font-size: 1rem;
@@ -113,7 +150,7 @@ ul, ol {
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  transition: background-color var(--transition), color var(--transition), transform 0.2s ease;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
 }
 
 .btn:focus-visible {
@@ -142,7 +179,6 @@ ul, ol {
   color: var(--ws-white);
 }
 
-/* Responsive visibility */
 @media (max-width: 768px) {
   .hide-mobile { display: none !important; }
 }
