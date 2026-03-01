@@ -45,8 +45,7 @@ interface ProductCardProps {
 
 function ProductCardImage({ product }: { product: Product }) {
   const imageSlug = product.imageSlug;
-  const initialSrc = imageSlug ? getProductImageSrc(imageSlug) : '';
-  const [src, setSrc] = useState(initialSrc);
+  const src = imageSlug ? getProductImageSrc(imageSlug) : '';
   const [failed, setFailed] = useState(false);
 
   const handleError = () => setFailed(true);
