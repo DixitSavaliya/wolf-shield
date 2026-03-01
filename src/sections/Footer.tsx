@@ -23,10 +23,11 @@ export function Footer() {
             ))}
           </address>
           <div className="footer-links">
-            <a href={`tel:${PHONES[0].replace(/\s/g, '')}`} className="footer-link">
+            <a href={`tel:${PHONES[0].replace(/\s/g, '')}`} className="footer-link" aria-label="Call us">
               {PHONES.join(' / ')}
             </a>
-            <a href={`mailto:${EMAIL}`} className="footer-link">
+            <span className="footer-links-sep" aria-hidden>|</span>
+            <a href={`mailto:${EMAIL}`} className="footer-link" aria-label="Email us">
               {EMAIL}
             </a>
           </div>

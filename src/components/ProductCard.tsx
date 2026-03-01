@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import type { Product, ProductBlock } from '../data/products';
-import { productToCatalogPage } from '../data/catalogSlides';
-import { placeholderImages } from '../data/placeholderImages';
 import './ProductCard.css';
+
+/** Product images live in public/images/products/{imageSlug}.png */
+function getProductImageSrc(imageSlug: string): string {
+  return `/images/products/${imageSlug}.png`;
+}
 
 function BlockContent({ block }: { block: ProductBlock }) {
   if (block.type === 'list' && block.items?.length) {
@@ -41,26 +44,14 @@ interface ProductCardProps {
 }
 
 function ProductCardImage({ product }: { product: Product }) {
-  const pageNum = productToCatalogPage[product.id];
-  const catalogBase = pageNum ? `/images/catalog-pages/${pageNum}` : null;
-  const singleImg = product.imageSlug ? `/images/catalog/${product.imageSlug}.jpg` : null;
-  const [src, setSrc] = useState(() => catalogBase ? `${catalogBase}.png` : singleImg ?? '');
-  const [useDummy, setUseDummy] = useState(false);
+  const imageSlug = product.imageSlug;
+  const initialSrc = imageSlug ? getProductImageSrc(imageSlug) : '';
+  const [src, setSrc] = useState(initialSrc);
+  const [failed, setFailed] = useState(false);
 
-  const dummySrc = placeholderImages.productCard(product.title.split(' ')[0] || 'Product');
+  const handleError = () => setFailed(true);
 
-  const handleError = () => {
-    if (src.endsWith('.png') && catalogBase) {
-      setSrc(`${catalogBase}.jpg`);
-    } else if (!useDummy) {
-      setSrc(dummySrc);
-      setUseDummy(true);
-    } else {
-      setSrc('');
-    }
-  };
-
-  if (!src) {
+  if (!imageSlug || !src || failed) {
     return (
       <div className="product-card-placeholder is-visible">
         <span>WOLF SHIELD</span>
@@ -70,19 +61,15 @@ function ProductCardImage({ product }: { product: Product }) {
   }
 
   return (
-    <>
-      <img
-        src={src}
-        alt=""
-        aria-hidden
-        className="product-card-img"
-        onError={handleError}
-      />
-      <div className="product-card-placeholder" aria-hidden>
-        <span>WOLF SHIELD</span>
-        <span>{product.title.split(' ')[0]}</span>
-      </div>
-    </>
+    <img
+      src={src}
+      alt=""
+      aria-hidden
+      className="product-card-img"
+      onError={handleError}
+      loading="lazy"
+      decoding="async"
+    />
   );
 }
 

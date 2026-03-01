@@ -3,32 +3,38 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
-/* WOLF SHIELD – Design system */
+/* WOLF SHIELD – Design system (professional, user-friendly) */
 :root {
   --ws-primary: #0c2340;
   --ws-primary-light: #1a3a5c;
   --ws-primary-dark: #061828;
   --ws-accent: #c45c26;
+  --ws-accent-hover: #a84d1f;
   --ws-white: #ffffff;
-  --ws-off-white: #f8f9fa;
+  --ws-off-white: #f6f8fa;
+  --ws-surface: #f0f2f5;
   --ws-gray-100: #e9ecef;
   --ws-gray-200: #dee2e6;
   --ws-gray-600: #6c757d;
   --ws-gray-800: #343a40;
-  --ws-text: #212529;
+  --ws-text: #1a1d21;
   --ws-text-muted: #495057;
+  --ws-border: rgba(12, 35, 64, 0.08);
   --font-heading: "Libre Baskerville", "Georgia", serif;
   --font-body: "DM Sans", "Segoe UI", system-ui, sans-serif;
   --space-section: clamp(3.5rem, 7vw, 5.5rem);
   --space-block: clamp(1rem, 2vw, 1.5rem);
   --container-max: 1200px;
-  --container-padding: clamp(1rem, 4vw, 1.5rem);
-  --radius: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --shadow: 0 4px 20px rgba(12, 35, 64, 0.08);
-  --shadow-lg: 0 12px 40px rgba(12, 35, 64, 0.12);
-  --transition: 0.2s ease;
+  --container-padding: clamp(1.25rem, 4vw, 1.75rem);
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --shadow-sm: 0 2px 8px rgba(12, 35, 64, 0.06);
+  --shadow: 0 4px 24px rgba(12, 35, 64, 0.08);
+  --shadow-lg: 0 12px 48px rgba(12, 35, 64, 0.12);
+  --shadow-xl: 0 24px 56px rgba(12, 35, 64, 0.14);
+  --transition: 0.22s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --touch-min: 44px;
   --header-height: 72px;
 }
@@ -49,13 +55,19 @@ html {
 body {
   font-family: var(--font-body);
   font-size: clamp(1rem, 2vw, 1.0625rem);
-  line-height: 1.6;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
   color: var(--ws-text);
   background-color: var(--ws-white);
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--ws-primary);
+  color: var(--ws-white);
 }
 
 #root {
@@ -79,7 +91,7 @@ a {
 }
 
 a:hover {
-  color: var(--ws-accent);
+  color: var(--ws-accent-hover);
 }
 
 a:focus-visible {
@@ -125,9 +137,10 @@ ul, ol {
   font-size: clamp(1.5rem, 3.5vw, 2.25rem);
   font-weight: 700;
   color: var(--ws-primary);
-  margin-bottom: 0.75rem;
-  line-height: 1.25;
+  margin-bottom: 0.875rem;
+  line-height: 1.28;
   letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .section-subtitle {
@@ -150,7 +163,7 @@ ul, ol {
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 
 .btn:focus-visible {
@@ -161,11 +174,14 @@ ul, ol {
 .btn-primary {
   background-color: var(--ws-primary);
   color: var(--ws-white);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
   background-color: var(--ws-primary-light);
   color: var(--ws-white);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
 }
 
 .btn-outline {
@@ -177,6 +193,8 @@ ul, ol {
 .btn-outline:hover {
   background-color: var(--ws-primary);
   color: var(--ws-white);
+  border-color: var(--ws-primary);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {

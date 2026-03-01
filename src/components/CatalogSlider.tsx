@@ -3,16 +3,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { catalogSlides } from '../data/catalogSlides';
-import { placeholderImages } from '../data/placeholderImages';
 import './CatalogSlider.css';
 
-function CatalogSlideImage({ imageBase, slideIndex }: { imageBase: string; slideIndex: number }) {
-  const [useJpg, setUseJpg] = useState(false);
-  const [useDummy, setUseDummy] = useState(false);
+function CatalogSlideImage({ imageBase, title }: { imageBase: string; title: string }) {
+  const [failed, setFailed] = useState(false);
+  const src = `${imageBase}.png`;
 
-  const localSrc = useJpg ? `${imageBase}.jpg` : `${imageBase}.png`;
-  const dummySrc = placeholderImages.catalogSlide(slideIndex);
-  const src = useDummy ? dummySrc : localSrc;
+  if (failed) {
+    return (
+      <div className="catalog-slide-img-inner catalog-slider-placeholder">
+        <span>{title}</span>
+      </div>
+    );
+  }
 
   return (
     <div className="catalog-slide-img-inner">
@@ -20,10 +23,9 @@ function CatalogSlideImage({ imageBase, slideIndex }: { imageBase: string; slide
         src={src}
         alt=""
         className="catalog-slider-img"
-        onError={() => {
-          if (!useJpg) setUseJpg(true);
-          else setUseDummy(true);
-        }}
+        onError={() => setFailed(true)}
+        loading="lazy"
+        decoding="async"
       />
     </div>
   );
@@ -59,7 +61,7 @@ export function CatalogSlider() {
           <SwiperSlide key={slide.id}>
             <div className="catalog-slide">
               <div className="catalog-slide-image-wrap">
-                <CatalogSlideImage imageBase={slide.imageBase} slideIndex={slide.index} />
+                <CatalogSlideImage imageBase={slide.imageBase} title={slide.title} />
               </div>
               <div className="catalog-slide-caption">
                 <span className="catalog-slide-title">{slide.title}</span>

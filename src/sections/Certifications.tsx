@@ -1,8 +1,20 @@
 import './Certifications.css';
 
 const CERTIFICATIONS = [
-  { id: 'ce', badge: 'CE', title: 'Certified CE Company', description: 'European conformity marking for quality and safety standards.' },
-  { id: 'iso', badge: 'ISO 9001:2015', title: 'Certified ISO 9001:2015 Company', description: 'International quality management system certification.' },
+  {
+    id: 'ce',
+    image: '/images/certifications/ce-certified.png',
+    title: 'Certified CE Company',
+    description: 'European conformity marking for quality and safety standards.',
+    alt: 'CE Certified Company badge',
+  },
+  {
+    id: 'iso',
+    image: '/images/certifications/iso-9001-2015.png',
+    title: 'Certified ISO 9001:2015 Company',
+    description: 'International quality management system certification.',
+    alt: 'Certified ISO 9001:2015 Company badge',
+  },
 ];
 
 export function Certifications() {
@@ -20,9 +32,15 @@ export function Certifications() {
           {CERTIFICATIONS.map((cert) => (
             <article key={cert.id} className="certifications-card" aria-labelledby={`cert-${cert.id}-title`}>
               <div className="certifications-badge-wrap">
-                <div className="certifications-badge" aria-hidden>
-                  <span className="certifications-badge-text">{cert.badge}</span>
-                </div>
+                <img
+                  src={cert.image}
+                  alt={cert.alt}
+                  className="certifications-badge-img"
+                  width={150}
+                  height={150}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <h3 id={`cert-${cert.id}-title`} className="certifications-card-title">{cert.title}</h3>
               <p className="certifications-card-desc">{cert.description}</p>

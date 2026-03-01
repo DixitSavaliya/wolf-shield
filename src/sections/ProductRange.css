@@ -1,6 +1,7 @@
 .product-range {
-  background: var(--ws-primary);
+  background: linear-gradient(180deg, var(--ws-primary) 0%, var(--ws-primary-light) 100%);
   color: var(--ws-white);
+  position: relative;
 }
 
 .product-range-title {
@@ -45,11 +46,13 @@
   border-radius: var(--radius);
   font-weight: 600;
   font-size: clamp(0.9375rem, 1.5vw, 1rem);
-  transition: background-color var(--transition);
+  transition: background-color var(--transition), transform var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .product-range-item:hover {
   background: rgba(255, 255, 255, 0.14);
+  transform: translateX(4px);
 }
 
 .product-range-icon {
@@ -79,6 +82,7 @@
 
 .product-range-cta-link:hover {
   color: var(--ws-accent);
+  text-underline-offset: 0.35em;
 }
 
 .product-range-cta-link:focus-visible {

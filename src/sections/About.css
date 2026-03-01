@@ -1,5 +1,6 @@
 .about {
   background: var(--ws-off-white);
+  position: relative;
 }
 
 .about .container {
@@ -22,8 +23,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.25rem;
-  background: var(--ws-primary);
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--ws-primary) 0%, var(--ws-primary-light) 100%);
   color: var(--ws-white);
   font-family: var(--font-heading);
   font-size: clamp(1.125rem, 2.5vw, 1.5rem);
@@ -33,6 +34,7 @@
   box-shadow: var(--shadow);
   text-align: center;
   max-width: 100%;
+  letter-spacing: 0.02em;
 }
 
 .about-logo-wrap {
@@ -55,7 +57,7 @@
 .about-content p {
   margin-bottom: var(--space-block);
   color: var(--ws-text);
-  line-height: 1.65;
+  line-height: 1.7;
   font-size: clamp(0.9375rem, 1.5vw, 1rem);
 }
 

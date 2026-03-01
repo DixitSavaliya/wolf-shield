@@ -1,7 +1,6 @@
 /**
- * Catalog slider: one slide per catalog page image.
- * Add your 6 catalog screenshot images to public/images/catalog-pages/
- * as 1.png, 2.png, 3.png, 4.png, 5.png, 6.png (or .jpg)
+ * Catalog slider: one slide per product group.
+ * Uses product images from public/images/products/.
  */
 
 export interface CatalogSlide {
@@ -9,7 +8,7 @@ export interface CatalogSlide {
   index: number;
   title: string;
   products: string[];
-  /** Path without extension - try .png then .jpg */
+  /** Image path without extension - uses .png from public/images/products */
   imageBase: string;
 }
 
@@ -19,42 +18,42 @@ export const catalogSlides: CatalogSlide[] = [
     index: 1,
     title: 'Tile Adhesives – Silver & Gold',
     products: ['SILVER C1T TYPE - 1', 'GOLD C2T TYPE - 2'],
-    imageBase: '/images/catalog-pages/1',
+    imageBase: '/images/products/gold-c2t',
   },
   {
     id: 'slide-2',
     index: 2,
     title: 'Block Jointing Mortar & Tile Grout',
     products: ['BLOCK JOINTING MORTAR', 'TILE GROUT'],
-    imageBase: '/images/catalog-pages/2',
+    imageBase: '/images/products/block-jointing',
   },
   {
     id: 'slide-3',
     index: 3,
     title: 'Tile Adhesives – Platinum',
     products: ['PLATINUM C2TE TYPE - 3', 'PLATINUM WHITE C2TES1 TYPE - 4'],
-    imageBase: '/images/catalog-pages/3',
+    imageBase: '/images/products/platinum-c2te',
   },
   {
     id: 'slide-4',
     index: 4,
     title: 'Waterproofing – SBR & LWP',
     products: ['SBR - SUPER LATEX', 'LWP - TONIC FOR CEMENT'],
-    imageBase: '/images/catalog-pages/4',
+    imageBase: '/images/products/sbr-super-latex',
   },
   {
     id: 'slide-5',
     index: 5,
     title: 'Block Hardner & Tile Spacer',
     products: ['BLOCK HARDNER', 'TILE SPACER'],
-    imageBase: '/images/catalog-pages/5',
+    imageBase: '/images/products/block-hardner',
   },
   {
     id: 'slide-6',
     index: 6,
     title: 'Tile Cleaner & Epoxy Grout',
     products: ['TILE CLEANER', 'EPOXY GROUT'],
-    imageBase: '/images/catalog-pages/6',
+    imageBase: '/images/products/epoxy-grout',
   },
 ];
 
